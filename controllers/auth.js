@@ -34,7 +34,7 @@ exports.signUp = (req,res) => {
             {
               email : email,
             },
-            process.env.SECRET_ID
+            process.env.SECRET_KEY
           );
 
           res.status(200).json({
@@ -79,7 +79,7 @@ exports.signIn = (req, res) => {
               {
                 email: email,
               },
-              process.env.SECRET_ID
+              process.env.SECRET_KEY
             );
             res.status(200).json({
               message: "User signed in successfully",

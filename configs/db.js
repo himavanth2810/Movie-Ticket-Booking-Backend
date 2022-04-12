@@ -1,10 +1,10 @@
 const {Client}= require("pg");
 
 const client = new Client({
-    user: process.env.ESQL_USER,
-    host: process.env.ESQL_HOST,
-    database: process.env.ESQL_DB,
-    password: process.env.ESQL_PASSWORD,
+    user: process.env.PSQL_USER,
+    host: process.env.PSQL_HOST,
+    database: process.env.PSQL_DB,
+    password: process.env.PSQL_PASSWORD,
     port: 5432,
 });
 

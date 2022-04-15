@@ -2,6 +2,8 @@ require("./configs/dotenv");
 const express = require('express');
 const cors = require('cors');
 const {signIn, signUp} = require("./controllers/auth");
+const { addMovie, updateMovie, deleteMovie } = require("./controllers/movie");
+const { handleMovieIdParam } = require("./middlewares/moviemiddleware");
 const client = require("./configs/db");
 const passport = require("passport");
 const session = require("express-session");
@@ -48,6 +50,11 @@ app.get('/auth/failure',(req, res) =>{
 
 app.use("/auth/signup",signUp);
 app.use("/auth/signin",signIn);
+
+app.param("movieId", handleMovieIdParam);
+app.post("/auth/add", addMovie);
+app.put("/auth/update/:movieId", updateMovie);
+app.delete("/auth/delete/:movieId", deleteMovie);
 
 client.connect((err)=>{
     if(err){

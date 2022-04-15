@@ -99,3 +99,109 @@ exports.signIn = (req, res) => {
       });
     });
 };
+
+/*exports.addMovie = (req,res) => {
+
+  const {title,language,description} = req.body;
+  
+  client.query(`SELECT * FROM movies WHERE title = '${title}';`)
+  .then((data) => {
+    isValid = data.rows;
+    if(isValid.length !== 0) {
+      res.status(400).json({
+        error: "Movie already exists",
+      });
+    }
+    else{
+         if(err){
+           res.status(500).json({
+             error:"Internal Server Error",
+           });
+         }
+         const movie ={
+           title,
+           language,
+           description,
+         };
+
+        client.query(`INSERT INTO movies (title, language, description) VALUES ('${movie.title}', '${movie.language}', '${movie.description}');`
+        )
+        .then((data) => {
+          const movie_token = jwt.sign(
+            {
+              title : title,
+            },
+            process.env.SECRET_MOVIE_KEY
+          );
+
+          res.status(200).json({
+            message: "Movie added successfully to database",
+            token: movie_token,
+          });
+        })
+        .catch((err) => {
+          res.status(500).json({
+            error:"Database error occurred!",
+          });
+        });
+    }
+  })
+  .catch((err)=>{
+    res.status(500).json({
+      error: "Database error occurred!",
+    });
+  });
+};
+
+exports.addTheatre = (req,res) => {
+
+  const {name,screens,place} = req.body;
+  
+  client.query(`SELECT * FROM theatres WHERE name = '${name}' AND place = '${place}';`)
+  .then((data) => {
+    isValid = data.rows;
+    if(isValid.length !== 0) {
+      res.status(400).json({
+        error: "Theatre already exists",
+      });
+    }
+    else{
+         if(err){
+           res.status(500).json({
+             error:"Internal Server Error",
+           });
+         }
+         const theatre ={
+           name,
+           screens,
+           place,
+         };
+
+        client.query(`INSERT INTO theatres (name, screens, place) VALUES ('${theatre.name}', '${theatre.screens}', '${theatre.place}');`
+        )
+        .then((data) => {
+          const theatre_token = jwt.sign(
+            {
+              title : title,
+            },
+            process.env.SECRET_THEATRE_KEY
+          );
+
+          res.status(200).json({
+            message: "Theatre added successfully to database",
+            token: theatre_token,
+          });
+        })
+        .catch((err) => {
+          res.status(500).json({
+            error:"Database error occurred!",
+          });
+        });
+    }
+  })
+  .catch((err)=>{
+    res.status(500).json({
+      error: "Database error occurred!",
+    });
+  });
+};*/

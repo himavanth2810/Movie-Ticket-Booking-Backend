@@ -4,6 +4,8 @@ const cors = require('cors');
 const {signIn, signUp} = require("./controllers/auth");
 const { addMovie, updateMovie, deleteMovie } = require("./controllers/movie");
 const { handleMovieIdParam } = require("./middlewares/moviemiddleware");
+const { addTheatre, updateTheatre, deleteTheatre } = require("./controllers/theatre");
+const { handleTheatreIdParam } = require("./middlewares/theatremiddleware");
 const client = require("./configs/db");
 const passport = require("passport");
 const session = require("express-session");
@@ -55,6 +57,11 @@ app.param("movieId", handleMovieIdParam);
 app.post("/auth/add", addMovie);
 app.put("/auth/update/:movieId", updateMovie);
 app.delete("/auth/delete/:movieId", deleteMovie);
+
+app.param("theatreId", handleTheatreIdParam);
+app.post("/auth/add", addTheatre);
+app.put("/auth/update/:theatreId", updateTheatre);
+app.delete("/auth/delete/:theatreId", deleteTheatre);
 
 client.connect((err)=>{
     if(err){

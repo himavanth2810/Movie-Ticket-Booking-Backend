@@ -35,13 +35,13 @@ app.get('/auth/facebook',
 
 app.get('/google/callback',
     passport.authenticate('google',{
-        successRedirect: '',
+        successRedirect: 'https://roaring-taffy-27ae3b.netlify.app/',
         failureRedirect: '/auth/failure',
     })
 );
 app.get('/facebook/callback',
   passport.authenticate('facebook',{
-       successRedirect: '',
+       successRedirect: 'https://roaring-taffy-27ae3b.netlify.app/',
        failureRedirect: '/auth/failure',
     })
 );
